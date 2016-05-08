@@ -78,11 +78,11 @@ public class OfxParserTest {
         InputStream is = this.getClass().getResourceAsStream("/example.ofx");
         assertEquals(Arrays.asList(
                 "A client",
-                "A Book publisher   10/04",
-                "GOOGLE *SVCSAPPS TOMA CCàG 01/04",
-                "PRELEVMNT",
+                "A Book publisher 10/04",
+                "GOOGLE Apps 01/04",
+                "Withdrawal",
                 "Some other client",
-                "PRELEVMNT",
+                "Withdrawal",
                 "Sending money here and there",
                 "Pizzeria",
                 "SNCF INTERNET",
@@ -94,16 +94,16 @@ public class OfxParserTest {
     public void testTransactionDescriptions() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/example.ofx");
         assertEquals(Arrays.asList(
-                "VIREMENT EN VOTRE FAVEUR",
-                "PAIEMENT PAR CARTE",
-                "PAIEMENT PAR CARTE",
-                "Bouygues Telecom",
-                "VIREMENT EN VOTRE FAVEUR",
-                "APLRL",
-                "Blah blah blah",
-                "PAIEMENT PAR CARTE",
-                "PAIEMENT PAR CARTE",
-                "PAIEMENT PAR CARTE"),
+                "Transfer in your favor",
+                "Payment by card",
+                "Payment by card",
+                "Telecom Bill",
+                "Transfer in your favor",
+                "Gym subscription",
+                "To my uncle",
+                "Payment by card",
+                "Payment by card",
+                "Payment by card"),
                 new OfxParser().parse(is).stream().map(t -> t.getMemo()).collect(Collectors.toList()));
     }
 
